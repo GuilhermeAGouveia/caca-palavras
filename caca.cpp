@@ -21,6 +21,8 @@ typedef struct
     int nc;
 } hwBoardType;
 
+pto directions[8] = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {1, -1}, {-1, -1}, {1, 1}, {-1, 1}};
+
 void remove_newline(char *str)
 {
     for (; *str; str++)
@@ -37,8 +39,6 @@ void string_toupper(char *str)
         *str = toupper(*str);
     }
 }
-
-pto directions[8] = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}, {1, -1}, {-1, -1}, {1, 1}, {-1, 1}};
 
 pto sum_pto(pto a, pto b)
 {
@@ -130,7 +130,7 @@ pto searchWord(hwBoardType *hwboard, char *word)
                 position = {i, j};
                 if (searchOneDirection(hwboard, position, word, directions[d]))
                 {
-                    printf("Achou em (%d, %d)\n", i, j);
+                    printf("%d %d\n", i + 1, j + 1);
                     return {i, j};
                 }
             }
@@ -190,6 +190,7 @@ int main()
             searchWord(hwboard, linha);
         }
         DEBUG(puts("----------------------------------"););
+        printf("\n");
         deleteHwBoard(hwboard);
     }
 }
