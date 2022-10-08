@@ -104,7 +104,7 @@ bool searchOneDirection(hwBoardType *hwBoard, pto position, char *word, pto dir)
     if (*word == '\0')
         return true;
 
-    if (!validPosition(position, hwBoard->nl + 1, hwBoard->nc + 1))
+    if (!validPosition(position, hwBoard->nl, hwBoard->nc))
         return false;
 
     char hwLetter = hwBoard->board[position.x * hwBoard->nc + position.y];
